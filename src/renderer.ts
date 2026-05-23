@@ -35,6 +35,7 @@ export class Renderer {
     selectedButtonId: string | null,
     transparent = false,
     time = 0,
+    showWatermark = false,
   ): void {
     const padding = 50;
     const ctx = this.ctx;
@@ -73,6 +74,14 @@ export class Renderer {
       const iconUrl = actionId && game.icons ? game.icons[actionId] : undefined;
 
       this.drawButton(ctx, bx, by, btn, action, iconUrl, isSelected, time);
+    }
+
+    if (showWatermark) {
+      ctx.font = "11px sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+      ctx.fillText("https://puni.cc", w / 2, h - 15);
     }
   }
 

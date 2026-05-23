@@ -191,14 +191,14 @@ class App {
   }
 
   private async savePng(): Promise<void> {
-    this.renderer.render(this.currentLayout, this.currentGame, this.assignments, null, true);
+    this.renderer.render(this.currentLayout, this.currentGame, this.assignments, null, true, 0, true);
     const blob = await this.renderer.toBlob();
     this.draw();
 
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `button-layout-${this.currentGame.id}-${this.currentLayout.id}.png`;
+    a.download = "ggst-layout.png";
     a.click();
     URL.revokeObjectURL(url);
   }
